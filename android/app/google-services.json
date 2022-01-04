@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "896256959229",
+    "project_id": "chatting-app-flutter2",
+    "storage_bucket": "chatting-app-flutter2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896256959229:android:afa5bcc91d4ac5bebb5494",
+        "android_client_info": {
+          "package_name": "com.example.chitchat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896256959229-v37j0oih9o69b0s3rnemi03aj25oguj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVUZtOGCfpOR_90KdgHCJZDYFtVLZiY8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896256959229-v37j0oih9o69b0s3rnemi03aj25oguj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:896256959229:android:6031e3bcaa31d63dbb5494",
+        "android_client_info": {
+          "package_name": "com.troovi.weight_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "896256959229-v37j0oih9o69b0s3rnemi03aj25oguj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVUZtOGCfpOR_90KdgHCJZDYFtVLZiY8g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "896256959229-v37j0oih9o69b0s3rnemi03aj25oguj8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
