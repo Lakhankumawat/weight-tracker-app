@@ -2,19 +2,21 @@ import 'dart:ui';
 import 'package:weight_tracker/constant/constant.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'add_weight.dart';
+import 'input_field.dart';
 
 class CustomDialogBox extends StatelessWidget {
-  final String? title, descriptions, image;
+  final String? title, descriptions, image, buttonText;
   final VoidCallback? press1, press2;
+  final TextEditingController? controller;
   const CustomDialogBox(
       {Key? key,
       this.title,
       this.descriptions,
       this.press1,
       this.press2,
-      this.image})
+      this.image,
+      this.controller,
+      this.buttonText})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -68,14 +70,16 @@ class CustomDialogBox extends StatelessWidget {
               SizedBox(
                 height: 22,
               ),
-              addWeight(context),
+              controller != null
+                  ? inputField(context, controller!)
+                  : SizedBox(),
               SizedBox(
                 height: 22,
               ),
               ElevatedButton(
                 onPressed: press1,
                 child: Text(
-                  'Save',
+                  buttonText!,
                   style: TextStyle(
                     fontSize: 20,
                   ),

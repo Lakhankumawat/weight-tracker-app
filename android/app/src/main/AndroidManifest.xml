@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.troovi.weight_tracker">
    <application
-        android:label="weight_tracker"
+        android:label="Lossy"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
