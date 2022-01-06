@@ -28,6 +28,38 @@ This project is part of an assignment
 > App link for testing is available above
 
 ## Preview
+<table>
+<thead>
+  <tr>
+    <th>Splash Screen</th>
+    <th>Welcome Screen</th>
+    <th>Login/Signup</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148362723-ca6936cd-0aa8-4685-a8a6-e9894ec902cc.jpg"></td>
+    <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148362678-f4d1c771-a473-409c-b933-b880b81bbb3e.jpg"></td>
+   <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148362711-1a261c07-4966-4978-8b0b-e27cac778b01.jpg"></td>
+    
+    
+  </tr>
+</tbody>
+ <thead>
+  <tr>
+    <th>Home Screen</th>
+    <th>History Screen</th>
+    <th>User Profile</th>
+  </tr>
+</thead>
+ <tbody>
+  <tr>
+   <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148362696-d694681b-b183-4b48-a9cf-e2624d085e9d.jpg"></td>
+     <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148363267-8624d623-4966-4a20-8081-b13babddb368.jpg"></td>
+    <td><img width="300" src="https://user-images.githubusercontent.com/55774240/148363279-4dfd4f65-5020-4e6f-b2ee-0d9a7873b7a6.jpg"></td>
+  </tr>
+</tbody>
+</table>
 
 
 
@@ -74,4 +106,7 @@ You can find them on [pub.dev](https://pub.dev/).
   smooth_page_indicator: ^1.0.0+2
   percent_indicator: ^3.4.0
  ``` 
+
+ 
+
 
