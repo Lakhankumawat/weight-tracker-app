@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:weight_tracker/provider/base_model.dart';
 
 class DetailsScreenViewModel extends BaseModel {
@@ -36,5 +37,12 @@ class DetailsScreenViewModel extends BaseModel {
           .doc(docId)
           .delete();
     }
+  }
+
+  bool checkWeight(int value) {
+    if (value < 74) {
+      return true;
+    } else
+      return false;
   }
 }

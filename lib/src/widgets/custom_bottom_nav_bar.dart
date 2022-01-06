@@ -12,16 +12,16 @@ Widget CustomBottomNavBar(HomeScreenViewModel model) {
         icon: Icon(Icons.home),
         backgroundColor: Colors.lightBlue,
       ),
-      BottomNavigationBarItem(
-        title: Text('Statistics'),
-        icon: Icon(Icons.auto_graph_rounded),
-        backgroundColor: Colors.lightBlue,
-      ),
       // BottomNavigationBarItem(
-      //   title: Text('History'),
-      //   icon: Icon(Icons.history),
+      //   title: Text('Statistics'),
+      //   icon: Icon(Icons.auto_graph_rounded),
       //   backgroundColor: Colors.lightBlue,
       // ),
+      BottomNavigationBarItem(
+        title: Text('History'),
+        icon: Icon(Icons.history),
+        backgroundColor: Colors.lightBlue,
+      ),
       BottomNavigationBarItem(
         title: Text('Settings'),
         icon: Icon(Icons.person_rounded),

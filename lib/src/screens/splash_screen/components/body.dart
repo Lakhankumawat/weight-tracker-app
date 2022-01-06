@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/constant/constant.dart';
+import 'package:weight_tracker/src/screens/auth_screen/auth_screen.dart';
 import 'package:weight_tracker/src/screens/splash_screen/components/carousel_card.dart';
 
 class Body extends StatelessWidget {
@@ -127,8 +128,7 @@ class Body extends StatelessWidget {
                 height: getProportionateScreenHeight(35),
               ),
               Container(
-                height: 170,
-                decoration: BoxDecoration(),
+                height: 200,
 
                 ///Try with padding over here
                 child: PageView.builder(
@@ -164,7 +164,10 @@ class Body extends StatelessWidget {
                     height: getProportionateScreenHeight(30),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(AuthScreen.routeName);
+                    },
                     child: Text(
                       'Start',
                       style: TextStyle(

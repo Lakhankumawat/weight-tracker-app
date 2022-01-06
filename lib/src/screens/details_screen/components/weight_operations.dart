@@ -12,7 +12,7 @@ class WeightOperations {
           return CustomDialogBox(
             title: 'Add new weight',
             descriptions: 'Lose weight & keep fit',
-            image: "assets/images/giphy.gif",
+            image: "assets/images/add.png",
             controller: model.addweightController,
             buttonText: 'Add',
             press1: () async {
@@ -32,7 +32,7 @@ class WeightOperations {
           return CustomDialogBox(
             title: 'Edit weight',
             descriptions: 'Lose weight & keep fit',
-            image: "assets/images/giphy.gif",
+            image: "assets/images/edit.png",
             controller: model.editweightController,
             buttonText: 'Save',
             press1: () async {
@@ -52,12 +52,15 @@ class WeightOperations {
           return CustomDialogBox(
             title: 'Delete weight?',
             descriptions: 'This entry will be permanently deleted!',
-            image: "assets/images/giphy.gif",
+            image: "assets/images/delete.png",
             buttonText: 'Delete',
             press1: () async {
               model.delete(docId: docId);
               Navigator.of(context).pop();
               Fluttertoast.showToast(msg: "Weight deleted");
+            },
+            press2: () {
+              Navigator.of(context).pop();
             },
           );
         });

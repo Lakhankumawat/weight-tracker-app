@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:weight_tracker/config/size_config.dart';
 
 class LineChartSample2 extends StatefulWidget {
   static String routeName = '/details-page';
@@ -24,11 +25,11 @@ class _LineChartSample2State extends State<LineChartSample2> {
         AspectRatio(
           aspectRatio: 1.70,
           child: Container(
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(
                   Radius.circular(18),
                 ),
-                color: Color(0xff232d37)),
+                color: Theme.of(context).primaryColor),
             child: Padding(
               padding: const EdgeInsets.only(
                   right: 18.0, left: 12.0, top: 24, bottom: 12),
@@ -67,13 +68,13 @@ class _LineChartSample2State extends State<LineChartSample2> {
         drawVerticalLine: true,
         getDrawingHorizontalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: Colors.white,
             strokeWidth: 1,
           );
         },
         getDrawingVerticalLine: (value) {
           return FlLine(
-            color: const Color(0xff37434d),
+            color: Colors.white,
             strokeWidth: 1,
           );
         },
@@ -87,9 +88,7 @@ class _LineChartSample2State extends State<LineChartSample2> {
           reservedSize: 22,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
-              color: Color(0xff68737d),
-              fontWeight: FontWeight.bold,
-              fontSize: 16),
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           getTitles: (value) {
             switch (value.toInt()) {
               case 2:
@@ -107,18 +106,18 @@ class _LineChartSample2State extends State<LineChartSample2> {
           showTitles: true,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
-            color: Color(0xff67727d),
+            color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 15,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
               case 1:
-                return '10k';
+                return '78';
               case 3:
-                return '30k';
+                return '74';
               case 5:
-                return '50k';
+                return '65';
             }
             return '';
           },
@@ -128,7 +127,10 @@ class _LineChartSample2State extends State<LineChartSample2> {
       ),
       borderData: FlBorderData(
           show: true,
-          border: Border.all(color: const Color(0xff37434d), width: 1)),
+          border: Border.all(
+            color: Colors.white,
+            width: 2,
+          )),
       minX: 0,
       maxX: 11,
       minY: 0,

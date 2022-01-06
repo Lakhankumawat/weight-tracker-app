@@ -1,64 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:weight_tracker/src/screens/home_screen/home_screen.dart';
+import 'package:weight_tracker/view/auth_screen_view_model.dart';
 import 'image_picker.dart';
-import 'dart:io';
 
 class AuthForm extends StatefulWidget {
-  AuthForm(
-    this.setValues,
-    this.isLoading,
-  );
-  final bool isLoading;
-  final void Function(
-    String email,
-    String password,
-    String username,
-    bool isLogin,
-    File? imageFile,
-    BuildContext ctx,
-  ) setValues;
+  final AuthScreenViewModel model;
+  const AuthForm({Key? key, required this.model}) : super(key: key);
 
   @override
-  _AuthFormState createState() => _AuthFormState();
+  State<AuthForm> createState() => _AuthFormState();
 }
 
 class _AuthFormState extends State<AuthForm> {
-  String _userEmail = '';
-  String _userName = '';
-  String _userPassword = '';
-  var _isLogin = false;
-  bool _showPassword = false;
-  final _formKey = GlobalKey<FormState>();
-  File? _userImgfile;
-  void _pickImage(File? image) {
-    _userImgfile = image;
-  }
-
-  void _trySubmit() {
-    bool _isValid = _formKey.currentState!.validate();
-    FocusScope.of(context).unfocus();
-
-    if (_userImgfile == null && !_isLogin) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Please select an image'),
-          backgroundColor: Theme.of(context).errorColor,
-        ),
-      );
-      return;
-    }
-
-    if (_isValid) {
-      _formKey.currentState!.save();
-      widget.setValues(
-        _userEmail.trim(),
-        _userPassword.trim(),
-        _userName.trim(),
-        _isLogin,
-        _userImgfile as File,
-        context,
-      );
-    }
-  }
+  bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -74,11 +29,11 @@ class _AuthFormState extends State<AuthForm> {
           child: Padding(
             padding: EdgeInsets.all(16),
             child: Form(
-              key: _formKey,
+              key: widget.model.formKey,
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  if (!_isLogin) PickImage(_pickImage),
+                  if (!widget.model.isLogin) PickImage(widget.model.pickImage),
                   TextFormField(
                     key: ValueKey('email'),
                     validator: (value) {
@@ -92,10 +47,10 @@ class _AuthFormState extends State<AuthForm> {
                       labelText: 'Email',
                     ),
                     onSaved: (value) {
-                      _userEmail = value as String;
+                      widget.model.userEmail = value as String;
                     },
                   ),
-                  if (!_isLogin)
+                  if (!widget.model.isLogin)
                     TextFormField(
                       key: ValueKey('username'),
                       validator: (value) {
@@ -108,7 +63,7 @@ class _AuthFormState extends State<AuthForm> {
                         labelText: 'UserName',
                       ),
                       onSaved: (value) {
-                        _userName = value as String;
+                        widget.model.userName = value as String;
                       },
                     ),
                   TextFormField(
@@ -119,47 +74,59 @@ class _AuthFormState extends State<AuthForm> {
                       }
                       return null;
                     },
-                    obscureText: !_showPassword,
+                    obscureText: !widget.model.showPassword,
                     decoration: InputDecoration(
                       labelText: 'Password',
                       suffixIcon: IconButton(
                         icon: Icon(
-                          _showPassword
+                          widget.model.showPassword
                               ? Icons.visibility
                               : Icons.visibility_off,
                         ),
                         onPressed: () {
-                          setState(() {
-                            _showPassword = !_showPassword;
-                          });
+                          widget.model.changePasswordVisibility();
                         },
                       ),
                     ),
                     onSaved: (value) {
-                      _userPassword = value as String;
+                      widget.model.userPassword = value as String;
                     },
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  if (widget.isLoading)
+                  if (isLoading)
                     CircularProgressIndicator()
                   else
                     ElevatedButton(
-                      onPressed: _trySubmit,
-                      child: Text(
-                        _isLogin ? 'Login' : 'Signup',
-                      ),
-                    ),
-                  if (!widget.isLoading)
-                    TextButton(
-                      onPressed: () {
+                      onPressed: () async {
                         setState(() {
-                          _isLogin = !_isLogin;
+                          isLoading = true;
                         });
+                        bool isSuccess = await widget.model.trySubmit(context);
+                        if (isSuccess) {
+                          Navigator.of(context)
+                              .pushReplacementNamed(HomeScreen.routeName);
+                        } else {
+                          setState(() {
+                            isLoading = false;
+                          });
+                          Fluttertoast.showToast(
+                              msg:
+                                  'Oops! An error occurred while passing credentials');
+                        }
                       },
                       child: Text(
-                        _isLogin
+                        widget.model.isLogin ? 'Login' : 'Signup',
+                      ),
+                    ),
+                  if (!isLoading)
+                    TextButton(
+                      onPressed: () {
+                        widget.model.changeLoginType();
+                      },
+                      child: Text(
+                        widget.model.isLogin
                             ? 'Create New Account'
                             : 'I already have an account',
                         style: TextStyle(

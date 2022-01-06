@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           if (snapShots.hasData) {
             return HomeScreen();
           }
-          return AuthScreen();
+          return SplashScreen();
         },
       ),
     );

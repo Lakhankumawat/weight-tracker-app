@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
         builder: (context, model, child) {
           return Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               title: Center(child: Text('Lossy')),
             ),
             body: PageView(controller: model.pageController, children: [

@@ -1,11 +1,9 @@
-import 'dart:ui';
 import 'package:weight_tracker/constant/constant.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'input_field.dart';
 
 class CustomDialogBox extends StatelessWidget {
-  final String? title, descriptions, image, buttonText;
+  final String? title, descriptions, image, buttonText, buttonText2;
   final VoidCallback? press1, press2;
   final TextEditingController? controller;
   const CustomDialogBox(
@@ -16,7 +14,8 @@ class CustomDialogBox extends StatelessWidget {
       this.press2,
       this.image,
       this.controller,
-      this.buttonText})
+      this.buttonText,
+      this.buttonText2})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -76,15 +75,38 @@ class CustomDialogBox extends StatelessWidget {
               SizedBox(
                 height: 22,
               ),
-              ElevatedButton(
-                onPressed: press1,
-                child: Text(
-                  buttonText!,
-                  style: TextStyle(
-                    fontSize: 20,
+              Row(
+                mainAxisAlignment: press2 != null
+                    ? MainAxisAlignment.spaceEvenly
+                    : MainAxisAlignment.center,
+                children: [
+                  press2 != null
+                      ? OutlinedButton(
+                          onPressed: press2,
+                          child: Text(
+                            'Cancel',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                          style: OutlinedButton.styleFrom(
+                            shape: StadiumBorder(),
+                          ),
+                        )
+                      : SizedBox(
+                          height: 0,
+                        ),
+                  ElevatedButton(
+                    onPressed: press1,
+                    child: Text(
+                      buttonText!,
+                      style: TextStyle(
+                        fontSize: 20,
+                      ),
+                    ),
+                    style: ElevatedButton.styleFrom(shape: StadiumBorder()),
                   ),
-                ),
-                style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+                ],
               ),
             ],
           ),
@@ -96,11 +118,10 @@ class CustomDialogBox extends StatelessWidget {
             backgroundColor: Colors.transparent,
             radius: Constants.avatarRadius,
             child: ClipRRect(
-              borderRadius:
-                  BorderRadius.all(Radius.circular(Constants.avatarRadius)),
+              borderRadius: BorderRadius.all(Radius.circular(15)),
               child: Image.asset(
                 image!,
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               ),
             ),
           ),

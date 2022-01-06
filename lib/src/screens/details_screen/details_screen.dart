@@ -12,8 +12,11 @@ class DetailsScreen extends StatelessWidget {
     return BaseView<DetailsScreenViewModel>(
         onModelReady: (model) => {},
         builder: (context, model, child) {
-          return Body(
-            model: model,
+          return SingleChildScrollView(
+            physics: ScrollPhysics(),
+            child: Body(
+              model: model,
+            ),
           );
         });
   }
