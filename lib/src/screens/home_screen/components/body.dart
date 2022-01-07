@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/view/home_screen_view_model.dart';
-
 import 'line_graph.dart';
 
 class Body extends StatelessWidget {
@@ -60,10 +59,11 @@ class Body extends StatelessWidget {
                       physics: NeverScrollableScrollPhysics(),
                       child: CircularPercentIndicator(
                         radius: getProportionateScreenWidth(200),
-                        lineWidth: 10,
+                        lineWidth: 13,
                         animation: true,
+                        animationDuration: 2000,
                         arcType: ArcType.HALF,
-                        percent: 0.5,
+                        percent: 0.6,
                         arcBackgroundColor: Colors.grey.withOpacity(0.3),
                         startAngle: 270,
                         circularStrokeCap: CircularStrokeCap.round,

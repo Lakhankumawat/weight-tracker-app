@@ -6,15 +6,15 @@ class Constants {
 
   static List<Map<String, String>> carouselItems = [
     {
-      'image': 'assets/images/olivia.png',
-      'text': '\“This app pushes you every day to get better results\”',
-      'author': 'Olivia Johansson'
-    },
-    {
       'image': 'assets/images/robert.png',
       'text':
           '\“Strength does not come from physical capacity. It comes from an indomitable will.\”',
       'author': 'Robert Downey Jr.'
+    },
+    {
+      'image': 'assets/images/olivia.png',
+      'text': '\“This app pushes you every day to get better results\”',
+      'author': 'Olivia Johansson'
     },
     {
       'image': 'assets/images/olivia.png',

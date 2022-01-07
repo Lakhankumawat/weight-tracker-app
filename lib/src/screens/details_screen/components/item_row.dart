@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/src/models/weights_model.dart';

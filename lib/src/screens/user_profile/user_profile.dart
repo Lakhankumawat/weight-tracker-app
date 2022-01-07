@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:weight_tracker/provider/base_view.dart';
+import 'package:weight_tracker/src/screens/about_screen/about_us_screen.dart';
 import 'package:weight_tracker/src/screens/auth_screen/auth_screen.dart';
 import 'package:weight_tracker/view/user_profile_view_model.dart';
 
@@ -73,13 +74,16 @@ class UserProfile extends StatelessWidget {
                         SettingsGroup(
                           items: [
                             SettingsItem(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.of(context)
+                                    .pushNamed(AboutUs.routeName);
+                              },
                               icons: Icons.info_rounded,
                               iconStyle: IconStyle(
                                 backgroundColor: Colors.purple,
                               ),
                               title: 'About',
-                              subtitle: "Learn more about Weight Tracker'App",
+                              subtitle: "Learn more about Devs",
                             ),
                           ],
                         ),
@@ -98,7 +102,13 @@ class UserProfile extends StatelessWidget {
                               title: "Sign Out",
                             ),
                             SettingsItem(
-                              onTap: () {},
+                              onTap: () {
+                                model.deleteAccount();
+                                Fluttertoast.showToast(
+                                    msg: 'User Account Deleted');
+                                Navigator.of(context)
+                                    .pushNamed(AuthScreen.routeName);
+                              },
                               icons: CupertinoIcons.delete_solid,
                               title: "Delete account",
                               titleStyle: TextStyle(

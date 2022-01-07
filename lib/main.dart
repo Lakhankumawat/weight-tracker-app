@@ -22,8 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lossy',
-      navigatorKey: getIt<NavigationService>().navigatorKey,
+      title: 'Lossy', navigatorKey: getIt<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
       theme: FlexThemeData.light(scheme: FlexScheme.aquaBlue),
       // The Mandy red, dark theme.

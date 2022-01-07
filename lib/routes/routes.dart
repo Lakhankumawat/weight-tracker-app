@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:weight_tracker/src/screens/about_screen/about_us_screen.dart';
 import 'package:weight_tracker/src/screens/auth_screen/auth_screen.dart';
 import 'package:weight_tracker/src/screens/details_screen/details_screen.dart';
 import 'package:weight_tracker/src/screens/home_screen/home_screen.dart';
@@ -9,4 +10,5 @@ final Map<String, WidgetBuilder> routes = {
   DetailsScreen.routeName: (context) => DetailsScreen(),
   AuthScreen.routeName: (context) => AuthScreen(),
   SplashScreen.routeName: (context) => SplashScreen(),
+  AboutUs.routeName: (context) => AboutUs(),
 };

@@ -23,4 +23,11 @@ class UserProfileViewModel extends BaseModel {
   void signOut() async {
     await auth.signOut();
   }
+
+  void deleteAccount() async {
+    String? uid = auth.currentUser?.uid;
+    await db.collection('users').doc(uid).delete();
+  }
+
+  void changeDetails() {}
 }
