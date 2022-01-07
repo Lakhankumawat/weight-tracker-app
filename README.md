@@ -74,7 +74,7 @@ Lossy uses a number of open source techs to work properly:
 
 ## Installation
 
-Dillinger requires [Flutter](https://flutter.dev/) v2.8+ to run.
+Lossy requires [Flutter](https://flutter.dev/) v2.8+ to run.
 
 Install the dependencies and devDependencies and start the server.
 
