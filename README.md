@@ -1,3 +1,6 @@
+![White and Blue Smartphone Review Youtube Thumbnail](https://user-images.githubusercontent.com/55774240/148648863-09f0224c-62b0-460b-8d9a-2787f8d920f4.png)
+
+
 # Lossy
 ## The Weight and Fitness Tracker App.
 
