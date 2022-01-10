@@ -1,4 +1,5 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -8,13 +9,19 @@ import 'package:weight_tracker/src/screens/auth_screen/auth_screen.dart';
 import 'package:weight_tracker/view/user_profile_view_model.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({Key? key}) : super(key: key);
+  final ThemeMode? themeMode;
+  final ValueChanged<ThemeMode>? onThemeModeChanged;
+  final FlexSchemeData? flexSchemeData;
+
+  const UserProfile(
+      {Key? key, this.onThemeModeChanged, this.themeMode, this.flexSchemeData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BaseView<UserProfileViewModel>(
         onModelReady: (model) => {
-              model.init(),
+              model.init(context),
             },
         builder: (context, model, child) {
           return Scaffold(
@@ -55,7 +62,13 @@ class UserProfile extends StatelessWidget {
                               subtitle: "Make Weight Tracker'App yours",
                             ),
                             SettingsItem(
-                              onTap: () {},
+                              onTap: () {
+                                // if (model.isDark) {
+                                //   onThemeModeChanged!(ThemeMode.light);
+                                // } else {
+                                //   onThemeModeChanged!(ThemeMode.dark);
+                                // }
+                              },
                               icons: Icons.dark_mode_rounded,
                               iconStyle: IconStyle(
                                 iconsColor: Colors.white,
@@ -65,9 +78,7 @@ class UserProfile extends StatelessWidget {
                               title: 'Dark mode',
                               subtitle: "Automatic",
                               trailing: Switch.adaptive(
-                                value: false,
-                                onChanged: (value) {},
-                              ),
+                                  value: false, onChanged: (value) {}),
                             ),
                           ],
                         ),
@@ -117,6 +128,13 @@ class UserProfile extends StatelessWidget {
                               ),
                             ),
                           ],
+                        ),
+                        FlexThemeModeSwitch(
+                          themeMode: themeMode as ThemeMode,
+                          onThemeModeChanged:
+                              onThemeModeChanged as void Function(ThemeMode),
+                          flexSchemeData: flexSchemeData as FlexSchemeData,
+                          buttonOrder: FlexThemeModeButtonOrder.lightSystemDark,
                         ),
                       ],
                     )

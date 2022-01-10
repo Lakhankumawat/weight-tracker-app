@@ -1,3 +1,4 @@
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:weight_tracker/config/size_config.dart';
 import 'package:weight_tracker/provider/base_view.dart';
@@ -10,7 +11,12 @@ import 'package:weight_tracker/view/home_screen_view_model.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routeName = '/home-screen';
-  const HomeScreen({Key? key}) : super(key: key);
+  final ThemeMode? themeMode;
+  final ValueChanged<ThemeMode>? onThemeModeChanged;
+  final FlexSchemeData? flexSchemeData;
+  const HomeScreen(
+      {Key? key, this.onThemeModeChanged, this.themeMode, this.flexSchemeData})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,11 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               DetailsScreen(),
-              UserProfile(),
+              UserProfile(
+                onThemeModeChanged: onThemeModeChanged,
+                flexSchemeData: flexSchemeData,
+                themeMode: themeMode,
+              ),
             ]),
             floatingActionButton: ElevatedButton(
               onPressed: () {

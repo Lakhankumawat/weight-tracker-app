@@ -17,24 +17,47 @@ void main() async {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode themeMode = ThemeMode.system;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    const FlexScheme usedScheme = FlexScheme.aquaBlue;
     return MaterialApp(
       title: 'Lossy', navigatorKey: getIt<NavigationService>().navigatorKey,
       debugShowCheckedModeBanner: false,
-      theme: FlexThemeData.light(scheme: FlexScheme.aquaBlue),
-      // The Mandy red, dark theme.
-      darkTheme: FlexThemeData.dark(scheme: FlexScheme.aquaBlue),
-      // Use dark or light theme based on system setting.
-      themeMode: ThemeMode.system,
+      theme: FlexThemeData.light(
+        scheme: usedScheme,
+        // Use very subtly themed app bar elevation in light mode.
+        appBarElevation: 0.5,
+      ),
+      // Same definition for the dark theme, but using FlexThemeData.dark().
+      darkTheme: FlexThemeData.dark(
+        scheme: usedScheme,
+        // Use stronger themed app bar elevation in dark mode.
+        appBarElevation: 2,
+      ),
+      // Use the above dark or light theme based on active themeMode.
+      themeMode: themeMode,
       routes: routes,
       home: StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (ctx, snapShots) {
           if (snapShots.hasData) {
-            return HomeScreen();
+            return HomeScreen(
+              onThemeModeChanged: (ThemeMode mode) {
+                setState(() {
+                  themeMode = mode;
+                });
+              },
+              flexSchemeData: FlexColor.schemes[usedScheme]!,
+              themeMode: themeMode,
+            );
           }
           return SplashScreen();
         },
