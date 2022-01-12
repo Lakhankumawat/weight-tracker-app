@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
                 WeightOperations.addWeight(context, model);
               },
               child: Text(
-                'Add Weight',
+                'Add Weight here',
                 style: TextStyle(
                   fontSize: 15,
                   color: ThemeData().scaffoldBackgroundColor,
